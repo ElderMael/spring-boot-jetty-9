@@ -3,3 +3,4 @@
 *.ipr
 *.iws
 build/
+src/main/resources/static/vendors/
