@@ -1,0 +1,14 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %.-1level [%-35.35logger{35}] \(%-20.20thread{20}\) - %m%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <logger name="mx.gob.jgtjo" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
