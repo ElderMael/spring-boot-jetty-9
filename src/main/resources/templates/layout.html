@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<html>
 <head>
-    <title>Layout</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title data-layout-title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">
+        JGTJO</title>
+
     <link rel="stylesheet"
           href="../static/vendors/bootstrap/dist/css/bootstrap.css"
-          th:href="@{/vendors/bootstrap/dist/css/bootstrap.css}"/>
+          data-th-href="@{/vendors/bootstrap/dist/css/bootstrap.css}"/>
+
+    <link rel="stylesheet" href="../static/css/theme.css"
+          data-th-href="@{/css/theme.css}"/>
+
+    <meta data-layout-fragment="head-imports" data-th-remove="tag"/>
+
 </head>
 <body>
-
-<h1 layout:fragment="header">Layout</h1>
-
-<div layout:fragment="content">
+<div data-layout-fragment="content" data-th-remove="tag">
     Fake content
 </div>
 </body>

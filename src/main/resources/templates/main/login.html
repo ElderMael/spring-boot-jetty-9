@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout">
+<html data-layout-decorator="layout">
 <head>
-    <title>Index</title>
+    <title>Login</title>
+
+    <link rel="stylesheet" data-th-remove="tag"
+          href="../../static/vendors/bootstrap/dist/css/bootstrap.css"/>
+
+    <link rel="stylesheet" data-th-remove="tag"
+          href="../../static/css/theme.css"/>
 </head>
 <body>
-<h1 layout:fragment="header">Login</h1>
+<div data-layout-fragment="content">
+    <main class="container text-center">
+        <h3>Login with Username and Password</h3>
 
-<div layout:fragment="content" class="container">
-    <p th:if="${param.logout}" class="alert">You have been logged out</p>
+        <form name="form" data-th-action="@{/login}" action="/login"
+              method="POST">
+            <fieldset>
+                <input type="text" name="username" value=""
+                       placeholder="Username"/>
+                <input type="password" name="password" placeholder="Password"/>
+                <input type="submit" id="login" value="Login"
+                       class="btn btn-primary"/>
+            </fieldset>
+        </form>
 
-    <p th:if="${param.error}" class="alert alert-error">There was an error,
-        please try again</p>
+        <p data-th-if="${param.logout}" class="alert">You have been logged
+            out</p>
 
-    <h2>Login with Username and Password</h2>
+        <p data-th-if="${param.error}" class="alert alert-error">There was an
+            error,
+            please try again</p>
+    </main>
 
-    <form name="form" th:action="@{/login}" action="/login" method="POST">
-        <fieldset>
-            <input type="text" name="username" value="" placeholder="Username"/>
-            <input type="password" name="password" placeholder="Password"/>
-        </fieldset>
-        <input type="submit" id="login" value="Login"
-               class="btn btn-primary"/>
-    </form>
-
-    <script data-main="/js/login.js" src="../static/vendors/requirejs/require.js"
-            th:src="@{/vendors/requirejs/require.js}"></script>
+    <script data-main="/js/login.js"
+            src="../static/vendors/requirejs/require.js"
+            data-th-src="@{/vendors/requirejs/require.js}"></script>
 </div>
 </body>
 </html>
