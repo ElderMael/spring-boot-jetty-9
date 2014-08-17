@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout">
+<html data-layout-decorator="layout">
 <head>
-    <title>Index</title>
+    <title>Home</title>
 </head>
 <body>
-<h1 layout:fragment="header">Hello, World!</h1>
-
-<div layout:fragment="content" class="container">
-    Hello, from Spring!
+<div data-layout-fragment="content" data-th-remove="tag">
+    <header>
+        <h2>Welcome</h2>
+    </header>
+    <main>
+        Hello, <em data-th-text="${principal}">User</em>
+    </main>
 </div>
 </body>
 </html>
