@@ -42,9 +42,12 @@ public class SecurityConfiguration extends WebMvcConfigurerAdapter {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests().anyRequest().fullyAuthenticated().and()
+            http.authorizeRequests().antMatchers("/").fullyAuthenticated().and()
                 .formLogin()
-                .loginPage("/login").failureUrl("/login?error").permitAll();
+                .loginPage("/login").failureUrl("/login?error").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/vendors/**", "/js/**")
+                .permitAll();
         }
     }
 
